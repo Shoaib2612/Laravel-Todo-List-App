@@ -1,0 +1,67 @@
+
+.custom-navbar {
+  background-color: black;
+  border-radius: 30px; /* Cylindrical shape */
+  margin: 15px 7px;
+  padding: 10px 0;
+  max-width: 98%;
+  border: 1px solid lightgreen; 
+  /* border: 1px solid #ff9a9e; */
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.custom-name {
+  font-size: 34px;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-left: 20px;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.custom-link {
+  color: whitesmoke !important;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 15px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-link:hover {
+  background-color: rgb(116, 192, 116);
+  /* background-color: #d66a6e; */
+  color: black !important;
+  border-radius: 5px;
+}
+
+.custom-add-task {
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-add-task:hover {
+  background-color: rgb(116, 192, 116);
+  color: black !important;
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+  .custom-navbar {
+    margin: 10px;
+    max-width: 90%;
+  }
+
+  .custom-name {
+    font-size: 28px;
+  }
+
+  .navbar-collapse {
+    background-color: black;
+    border-radius: 15px;
+    padding: 10px;
+  }
+}
