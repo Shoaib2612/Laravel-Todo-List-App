@@ -2,7 +2,7 @@
 
 @section("content")
 
-<!-- ✅ Include Flatpickr CSS -->
+<!-- Flatpickr CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 
@@ -17,36 +17,35 @@
     }
 
     .form-floating label {
-      font-size: 14px; /* Smaller labels for mobile */
+      font-size: 14px; 
     }
 
     .form-control {
-      font-size: 16px; /* Improve readability on touch screens */
+      font-size: 16px; 
     }
   }
 
   /* Date-Time Picker Styles */
   .flatpickr-calendar {
-    z-index: 9999 !important; /* Ensure it appears above everything */
-    transform: scale(1); /* Shrinks the module */
+    z-index: 9999 !important; 
+    transform: scale(1);
     width: 300px !important; 
   }
 
   .flatpickr-time {
-    font-size: 16px !important; /* Smaller font for time */
+    font-size: 16px !important; 
   }
 
   .flatpickr-day {
     height: 33px !important;
-    width: 33px !important; /* Smaller date boxes */
+    width: 33px !important; 
     line-height: 33px !important;
   }
 
   .flatpickr-monthDropdown-months, .flatpickr-current-month input {
-    font-size: 16px !important; /* Smaller month and year text */
+    font-size: 16px !important; 
   }
 
-  /* Adjust Confirm Button */
   #confirm-btn {
     font-size: 14px;
     padding: 5px 10px;
@@ -73,20 +72,16 @@
 
     <form method="POST" action="{{ route('task.add.post') }}" class="p-4">
       @csrf
-
       <!-- Task Title -->
       <div class="form-floating mb-3">
         <input type="text" class="form-control" name="title" placeholder="Enter Task" required>
         <label for="title">Task Title</label>
       </div>
-
-      <!-- ✅ DateTime Picker -->
+      <!-- DateTime Picker -->
       <div class="form-floating mb-3">
         <input type="datetime-local" id="datetime-picker" name="deadline" class="form-control" placeholder="Select Deadline" required>
         <label for="datetime-picker">Deadline</label>
-      </div>
-      
-     
+      </div>     
       <!-- Task Priority Dropdown -->
       <div class="form-floating mb-3">
         <select class="form-select" name="priority" required>
@@ -96,19 +91,16 @@
         </select>
         <label for="priority">Task Priority</label>
       </div>
-
-      <!-- Fallback for Mobile -->
+     <!-- Fallback for Mobile -->
       <div class="form-floating mb-3 d-none">
         <input type="datetime-local" id="mobile-datetime-picker" name="deadline_mobile" class="form-control">
         <label for="mobile-datetime-picker">Deadline (Mobile)</label>
       </div>
-
       <!-- Task Description -->
       <div class="form-floating mb-3">
         <textarea class="form-control" name="description" placeholder="Enter description" rows="3" required></textarea>
         <label for="description">Task Description</label>
       </div>
-
       <!-- Success/Error Messages -->
       @if(session()->has('success'))
       <div class="alert alert-success fade-in">{{ session()->get('success') }}</div>
@@ -116,7 +108,6 @@
       @if(Session("error"))
       <div class="alert alert-danger fade-in">{{ session("error") }}</div>
       @endif
-
       <!-- Submit Button -->
       <button type="submit" class="btn btn-success rounded-pill w-100 submit-btn">Add Task</button>
     </form>
@@ -126,53 +117,10 @@
 @endsection
 
 @section('scripts')
-{{-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(() => {
-      let now = new Date();
-      now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); 
-
-      let minDateTime = now.toISOString().slice(0, 16); 
-      
-      let datetimePicker = document.getElementById("datetime-picker");
-      if (datetimePicker) {
-        datetimePicker.min = minDateTime;
-        console.log("Min datetime set:", minDateTime);
-      } else {
-        console.error("Datetime picker not found!");
-      }
-    }, 100);
-  });
-</script> --}}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-{{-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-
-    if (!isMobile) {
-      // ✅ Use Flatpickr for Desktop Users
-      flatpickr("#datetime-picker", {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
-        minDate: "today",
-        time_24hr: true,
-        defaultHour: 12,
-        defaultMinute: 0
-      });
-    } else {
-      // ✅ Show Mobile-Friendly Picker
-      document.querySelector("#datetime-picker").classList.add("d-none");
-      document.querySelector("#mobile-datetime-picker").classList.remove("d-none");
-      document.querySelector("#mobile-datetime-picker").setAttribute("required", true);
-    }
-  });
-</script> --}}
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-
     if (!isMobile) {
       // ✅ Use Flatpickr for Desktop Users
       const picker = flatpickr("#datetime-picker", {
@@ -201,11 +149,9 @@
           }, 10);
         }
       });
-
       document.getElementById("datetime-picker").addEventListener("click", function () {
         this._flatpickr.open();
       });
-
     } else {
       // ✅ Show Mobile-Friendly Picker
       document.querySelector("#datetime-picker").classList.add("d-none");
@@ -214,8 +160,4 @@
     }
   });
 </script>
-
-
-
-
 @endsection 

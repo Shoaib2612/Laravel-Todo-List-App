@@ -2,7 +2,7 @@
 
 @section("content")
 
-<!-- ✅ Include Flatpickr CSS -->
+<!-- Include Flatpickr CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 <style>
@@ -13,33 +13,33 @@
     }
 
     .form-floating label {
-      font-size: 14px; /* Smaller labels for mobile */
+      font-size: 14px; 
     }
 
     .form-control {
-      font-size: 16px; /* Improve readability on touch screens */
+      font-size: 16px; 
     }
   }
 
   /* Date-Time Picker Styles */
   .flatpickr-calendar {
-    z-index: 9999 !important; /* Ensure it appears above everything */
-    transform: scale(1); /* Shrinks the module */
+    z-index: 9999 !important; 
+    transform: scale(1); 
     width: 300px !important; 
   }
 
   .flatpickr-time {
-    font-size: 16px !important; /* Smaller font for time */
+    font-size: 16px !important; 
   }
 
   .flatpickr-day {
     height: 33px !important;
-    width: 33px !important; /* Smaller date boxes */
+    width: 33px !important; 
     line-height: 33px !important;
   }
 
   .flatpickr-monthDropdown-months, .flatpickr-current-month input {
-    font-size: 16px !important; /* Smaller month and year text */
+    font-size: 16px !important;
   }
 
   /* Adjust Confirm Button */
@@ -51,7 +51,7 @@
   /* Submit Button Animation */
   .submit-btn {
     transition: background 0.4s ease, transform 0.3s ease;
-    background: linear-gradient(45deg, #ffc107, #ff9800); /* Yellow-Orange for Edit */
+    background: linear-gradient(45deg, #ffc107, #ff9800); 
     color: white;
     font-size: 18px;
   }
@@ -69,7 +69,6 @@
 
     <form method="POST" action="{{ route('task.update', $task->id) }}" class="p-4">
       @csrf
-      {{-- @method('PUT') --}}
       <input type="hidden" name="_method" value="POST">
 
       <!-- Task Title -->
@@ -78,7 +77,7 @@
         <label for="title">Task Title</label>
       </div>
 
-      <!-- ✅ DateTime Picker -->
+      <!-- DateTime Picker -->
       <div class="form-floating mb-3">
         <input type="datetime-local" id="datetime-picker" name="deadline" class="form-control" placeholder="Select Deadline" value="{{ $task->deadline }}" required>
         <label for="datetime-picker">Deadline</label>
@@ -125,29 +124,6 @@
 @section('scripts')
 <!-- ✅ Include Flatpickr JS -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-{{-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-
-    if (!isMobile) {
-      // ✅ Use Flatpickr for Desktop Users
-      flatpickr("#datetime-picker", {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
-        minDate: "today",
-        time_24hr: true,
-        defaultHour: 12,
-        defaultMinute: 0
-      });
-    } else {
-      // ✅ Show Mobile-Friendly Picker
-      document.querySelector("#datetime-picker").classList.add("d-none");
-      document.querySelector("#mobile-datetime-picker").classList.remove("d-none");
-      document.querySelector("#mobile-datetime-picker").setAttribute("required", true);
-    }
-  });
-</script> --}}
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {

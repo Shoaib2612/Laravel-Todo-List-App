@@ -3,13 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield("title","To Do App")</title>
+    <title>📋@yield("title","To Do App")</title>
     <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Pikaday CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.2/css/pikaday.min.css">
-
+  
     <style>
       /* Animated Background */
       .animated-background {
@@ -18,7 +16,6 @@
         left: 0;
         width: 100%;
         height: 80%;
-        /* background: linear-gradient(-45deg, #1e3c72, #4e7fd3, #3070e6, #2fa5cc); */
         background: linear-gradient(-45deg, #ff9a9e, #ffc8b9, #ffdde1, #fc6076);
         background-size: 400% 400%;
         animation: gradientShift 10s ease infinite;

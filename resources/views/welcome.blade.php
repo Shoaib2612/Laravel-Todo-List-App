@@ -33,7 +33,6 @@
     white-space: pre-wrap;
     word-break: break-word;
     flex-grow: 1;
-    /* text-overflow: ellipsis; */
   }
 
   @keyframes fadeIn {
@@ -50,9 +49,9 @@
     color: white;
   }
 
-  .priority-high { background: #dc3545; }   /* Red */
-  .priority-medium { background: #ffc107; } /* Orange */
-  .priority-low { background: #28a745; }    /* Green */
+  .priority-high { background: #dc3545; }  
+  .priority-medium { background: #ffc107; } 
+  .priority-low { background: #28a745; }    
 
   /* Action Buttons */
   .task-action {
@@ -78,17 +77,17 @@
 
   /* Complete Task Button */
   .btn-complete {
-      background: #28a745; /* Green */
+      background: #28a745; 
       color: white;
   }
 
   .btn-complete:hover {
-      background: #1e7e34; /* Darker Green */
+      background: #1e7e34; 
       transform: scale(1.15);
   }
 
 
-  /* 🗑 Delete Button */
+  /* Delete Button */
   .btn-delete {
     background: #dc3545;
     color: white;
@@ -98,7 +97,7 @@
     background: #b71c1c;
     transform: scale(1.1);
   }
-  /* Flash Messages - Centered at Top */
+  /* Flash Messages*/
 .custom-alert {
   position: fixed;
   top: 20px;
@@ -120,7 +119,7 @@
 /* Different Colors for Messages */
 .custom-alert-success { background: #28a745; }
 .custom-alert-error { background: #dc3545; }
-.custom-alert-delete { background: #ff5252; } /* Slightly different red for delete */
+.custom-alert-delete { background: #ff5252; } 
 
 /* Fade In and Out Animation */
 @keyframes fadeInOut {
@@ -134,7 +133,7 @@
 .search-container {
     position: absolute;
     top: 100px;
-    right: 20px; /* Move to the right corner */
+    right: 20px; 
     width: 250px;
 }
 
@@ -173,14 +172,14 @@
 
   /* Move the search bar to the top */
   .search-container {
-    position: static; /* Reset position */
-    width: 100%; /* Full width */
-    margin-bottom: 10px; /* Add some spacing */
+    position: static; 
+    width: 100%;
+    margin-bottom: 10px; 
   }
 
   /* Adjust the width of filter and sort dropdowns */
   .form-select.w-auto {
-    width: 100% !important; /* Full width for dropdowns */
+    width: 100% !important; 
   }
 
   /* Align the "Show Completed Tasks" checkbox */
@@ -190,9 +189,6 @@
     margin-top: 10px;
   }
 }
-
-
-
 </style>
 
 <!-- Flash Messages -->
@@ -252,8 +248,6 @@
   </form>
 </div>
 
-
-
 <div class="my-3 p-3 bg-body rounded shadow-sm">
   <h5 class="border-bottom pb-2 mb-3">
     {{ request('showCompleted') ? 'Completed Tasks' : 'Your Tasks' }}
@@ -272,9 +266,7 @@
               <strong class="text-dark task-title">{{ $task->title }}</strong>  
               <small class="text-muted d-block">{{ $task->deadline }}</small>
               <p class="mb-1 task-description">{{ $task->description }} </p>
-              
-              {{-- @if(!request('showCompleted')) --}}
-              <!-- Priority Label (Only for active tasks) -->
+            
               <span class="priority 
                   @if(strtolower($task->priority) == 'high') priority-high 
                   @elseif(strtolower($task->priority) == 'medium') priority-medium 
@@ -282,7 +274,6 @@
                   @endif">
                   {{ ucfirst($task->priority) }}
               </span>
-              {{-- @endif --}}
           </div>
           <div class="task-actions">
               @if(request('showCompleted'))
@@ -351,8 +342,6 @@
 document.getElementById("showCompletedCheckbox").addEventListener("change", function() {
     document.getElementById("searchInput").dispatchEvent(new Event("input")); // Trigger search update
 });
-
-
 
 </script>
 

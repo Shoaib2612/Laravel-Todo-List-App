@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield("title","To Do App")</title>
+    <title>📋@yield("title","To Do App")</title>
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
     
