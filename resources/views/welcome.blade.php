@@ -156,7 +156,7 @@
     align-items: center;
   }
   .task-description{
-    max-width: 130px;
+    max-width: 135px;
   }
 
   .search-container {
