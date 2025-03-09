@@ -10,7 +10,6 @@
   body{
     background: linear-gradient(-45deg, #ff9a9e, #ffc8b9, #ffdde1, #fc6076);
   }
-  /* Mobile-Responsive Styles */
   @media (max-width: 768px) {
     .container {
       max-width: 90%;
@@ -51,7 +50,6 @@
     padding: 5px 10px;
   }
 
-  /* Submit Button Animation */
   .submit-btn {
     transition: background 0.4s ease, transform 0.3s ease;
     background: linear-gradient(45deg, #28a745, #218838);
@@ -72,17 +70,17 @@
 
     <form method="POST" action="{{ route('task.add.post') }}" class="p-4">
       @csrf
-      <!-- Task Title -->
+
       <div class="form-floating mb-3">
         <input type="text" class="form-control" name="title" placeholder="Enter Task" required>
         <label for="title">Task Title</label>
       </div>
-      <!-- DateTime Picker -->
+
       <div class="form-floating mb-3">
         <input type="datetime-local" id="datetime-picker" name="deadline" class="form-control" placeholder="Select Deadline" required>
         <label for="datetime-picker">Deadline</label>
       </div>     
-      <!-- Task Priority Dropdown -->
+
       <div class="form-floating mb-3">
         <select class="form-select" name="priority" required>
           <option value="high">High</option>
@@ -91,12 +89,7 @@
         </select>
         <label for="priority">Task Priority</label>
       </div>
-     <!-- Fallback for Mobile -->
-      <div class="form-floating mb-3 d-none">
-        <input type="datetime-local" id="mobile-datetime-picker" name="deadline_mobile" class="form-control">
-        <label for="mobile-datetime-picker">Deadline (Mobile)</label>
-      </div>
-      <!-- Task Description -->
+
       <div class="form-floating mb-3">
         <textarea class="form-control" name="description" placeholder="Enter description" rows="3" required></textarea>
         <label for="description">Task Description</label>
@@ -108,7 +101,6 @@
       @if(Session("error"))
       <div class="alert alert-danger fade-in">{{ session("error") }}</div>
       @endif
-      <!-- Submit Button -->
       <button type="submit" class="btn btn-success rounded-pill w-100 submit-btn">Add Task</button>
     </form>
   </div>
@@ -120,44 +112,38 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-    if (!isMobile) {
-      // ✅ Use Flatpickr for Desktop Users
-      const picker = flatpickr("#datetime-picker", {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
-        minDate: "today",
-        time_24hr: true,
-        defaultHour: 12,
-        defaultMinute: 0,
-        clickOpens: false, // Prevent auto-opening
-        onOpen: function (selectedDates, dateStr, instance) {
-          setTimeout(() => {
-            let confirmBtn = document.getElementById("confirm-btn");
-            if (!confirmBtn) {
-              confirmBtn = document.createElement("button");
-              confirmBtn.innerText = "Confirm";
-              confirmBtn.id = "confirm-btn";
-              confirmBtn.classList.add("btn", "btn-success", "w20");
+ 
+    const picker = flatpickr("#datetime-picker", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      minDate: "today",
+      time_24hr: true,
+      defaultHour: 12,
+      defaultMinute: 0,
+      disableMobile:true,
+      clickOpens: false, 
+      onOpen: function (selectedDates, dateStr, instance) {
+        setTimeout(() => {
+          let confirmBtn = document.getElementById("confirm-btn");
+          if (!confirmBtn) {
+            confirmBtn = document.createElement("button");
+            confirmBtn.innerText = "Confirm";
+            confirmBtn.id = "confirm-btn";
+            confirmBtn.classList.add("btn", "btn-success", "w20");
 
-              confirmBtn.addEventListener("click", function () {
-                instance.close(); // Close picker on Confirm click
-              });
+            confirmBtn.addEventListener("click", function () {
+              instance.close(); 
+            });
 
-              instance.calendarContainer.appendChild(confirmBtn);
-            }
-          }, 10);
-        }
-      });
-      document.getElementById("datetime-picker").addEventListener("click", function () {
-        this._flatpickr.open();
-      });
-    } else {
-      // ✅ Show Mobile-Friendly Picker
-      document.querySelector("#datetime-picker").classList.add("d-none");
-      document.querySelector("#mobile-datetime-picker").classList.remove("d-none");
-      document.querySelector("#mobile-datetime-picker").setAttribute("required", true);
-    }
+            instance.calendarContainer.appendChild(confirmBtn);
+          }
+        }, 10);
+      }
+    });
+    document.getElementById("datetime-picker").addEventListener("click", function () {
+      this._flatpickr.open();
+    });
+
   });
 </script>
 @endsection 

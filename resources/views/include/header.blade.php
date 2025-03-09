@@ -23,9 +23,9 @@
 
   <script>
     function confirmLogout(event) {
-        event.preventDefault(); // Prevent the default action of the link
+        event.preventDefault(); 
         if (confirm("Are you sure you want to logout?")) {
-            window.location.href = event.target.href; // Redirect if user confirms
+            window.location.href = event.target.href;
         }
     }
     </script>

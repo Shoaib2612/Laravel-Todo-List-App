@@ -36,5 +36,8 @@
     
       @yield("content")
     <script src="{{asset('assets/js/bootstrap.js')}}"></script>
+
+   
   </body>
+ @include("include.footer")
 </html>

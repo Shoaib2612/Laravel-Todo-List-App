@@ -71,19 +71,16 @@
       @csrf
       <input type="hidden" name="_method" value="POST">
 
-      <!-- Task Title -->
       <div class="form-floating mb-3">
         <input type="text" class="form-control" name="title" rows="3" placeholder="Enter Task" value="{{ $task->title }}" required>
         <label for="title">Task Title</label>
       </div>
 
-      <!-- DateTime Picker -->
       <div class="form-floating mb-3">
         <input type="datetime-local" id="datetime-picker" name="deadline" class="form-control" placeholder="Select Deadline" value="{{ $task->deadline }}" required>
         <label for="datetime-picker">Deadline</label>
       </div>
 
-      <!-- Task Priority Dropdown -->
       <div class="form-floating mb-3">
         <select class="form-select" name="priority" required>
           <option value="high" {{ $task->priority == 'high' ? 'selected' : '' }}>High</option>
@@ -93,13 +90,6 @@
         <label for="priority">Task Priority</label>
       </div>
 
-      <!-- Fallback for Mobile -->
-      <div class="form-floating mb-3 d-none">
-        <input type="datetime-local" id="mobile-datetime-picker" name="deadline_mobile" class="form-control" value="{{ $task->deadline }}">
-        <label for="mobile-datetime-picker">Deadline (Mobile)</label>
-      </div>
-
-      <!-- Task Description -->
       <div class="form-floating mb-3">
         <textarea class="form-control" name="description" placeholder="Enter description" rows="3" required>{{ $task->description }}</textarea>
         <label for="description">Task Description</label>
@@ -113,7 +103,6 @@
       <div class="alert alert-danger fade-in">{{ session("error") }}</div>
       @endif
 
-      <!-- Submit Button -->
       <button type="submit" class="btn btn-warning rounded-pill w-100 submit-btn">Update Task</button>
     </form>
   </div>
@@ -122,15 +111,12 @@
 @endsection
 
 @section('scripts')
-<!-- ✅ Include Flatpickr JS -->
+<!-- Flatpickr JS -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
 
-    if (!isMobile) {
-      // ✅ Use Flatpickr for Desktop Users
       const picker = flatpickr("#datetime-picker", {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
@@ -138,7 +124,8 @@
         time_24hr: true,
         defaultHour: 12,
         defaultMinute: 0,
-        clickOpens: false, // Prevent auto-opening
+        disableMobile:true,
+        clickOpens: false, 
         onOpen: function (selectedDates, dateStr, instance) {
           setTimeout(() => {
             let confirmBtn = document.getElementById("confirm-btn");
@@ -149,7 +136,7 @@
               confirmBtn.classList.add("btn", "btn-success", "w20");
 
               confirmBtn.addEventListener("click", function () {
-                instance.close(); // Close picker on Confirm click
+                instance.close(); 
               });
 
               instance.calendarContainer.appendChild(confirmBtn);
@@ -162,12 +149,6 @@
         this._flatpickr.open();
       });
 
-    } else {
-      // ✅ Show Mobile-Friendly Picker
-      document.querySelector("#datetime-picker").classList.add("d-none");
-      document.querySelector("#mobile-datetime-picker").classList.remove("d-none");
-      document.querySelector("#mobile-datetime-picker").setAttribute("required", true);
-    }
   });
 </script>
 @endsection

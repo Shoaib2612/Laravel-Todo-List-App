@@ -143,8 +143,7 @@ html, body {
             </div>
 
             <div class="form-check text-start my-1">
-                {{-- <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">Remember me</label> --}}
+              
             </div>
 
             @if(session()->has('success'))
@@ -162,7 +161,7 @@ html, body {
             <button class="btn btn-primary w-100" type="submit">Sign up</button>
             <small class="text-center">Or</small><br>
             <a href="{{ route('login') }}" class="text-center">Login</a>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; 2025</p>
+            <p class="mt-3 mb-3 text-body-secondary">&copy; Todo List App 2025</p>
         </form>
     </div>
 </main>

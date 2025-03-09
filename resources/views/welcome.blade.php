@@ -40,7 +40,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Priority Label */
   .priority {
     font-size: 12px;
     font-weight: bold;
@@ -53,7 +52,6 @@
   .priority-medium { background: #ffc107; } 
   .priority-low { background: #28a745; }    
 
-  /* Action Buttons */
   .task-action {
     border: none;
     padding: 8px;
@@ -64,7 +62,6 @@
     display: inline-block;
   }
  
-  /* edit button */
   .btn-edit {
     color: #007bff;
     background-color: #e7f0ff;
@@ -75,7 +72,6 @@
       color: white;
   }
 
-  /* Complete Task Button */
   .btn-complete {
       background: #28a745; 
       color: white;
@@ -86,8 +82,6 @@
       transform: scale(1.15);
   }
 
-
-  /* Delete Button */
   .btn-delete {
     background: #dc3545;
     color: white;
@@ -97,8 +91,8 @@
     background: #b71c1c;
     transform: scale(1.1);
   }
-  /* Flash Messages*/
-.custom-alert {
+
+  .custom-alert {
   position: fixed;
   top: 20px;
   left: 50%;
@@ -116,12 +110,10 @@
   animation: fadeInOut 2.5s ease-in-out;
 }
 
-/* Different Colors for Messages */
 .custom-alert-success { background: #28a745; }
 .custom-alert-error { background: #dc3545; }
 .custom-alert-delete { background: #ff5252; } 
 
-/* Fade In and Out Animation */
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translate(-50%, -10px); }
   20% { opacity: 1; transform: translate(-50%, 0); }
@@ -129,7 +121,6 @@
   100% { opacity: 0; transform: translate(-50%, -10px);}
 }
 
-/* Search Bar Styles */
 .search-container {
     position: absolute;
     top: 100px;
@@ -157,9 +148,7 @@
     cursor: pointer;
 }
 
-/* Mobile Responsiveness for Search Bar and Filters */
 @media (max-width: 768px) {
-  /* Stack the search bar above the filters */
   .container.text-center.my-3 form {
     display: flex;
     flex-direction: column;
@@ -167,22 +156,19 @@
     align-items: center;
   }
   .task-description{
-    max-width: 290px;
+    max-width: 100px;
   }
 
-  /* Move the search bar to the top */
   .search-container {
     position: static; 
     width: 100%;
     margin-bottom: 10px; 
   }
 
-  /* Adjust the width of filter and sort dropdowns */
   .form-select.w-auto {
     width: 100% !important; 
   }
 
-  /* Align the "Show Completed Tasks" checkbox */
   .form-check {
     width: 100%;
     text-align: left;
@@ -215,7 +201,6 @@
   <div class="container" style="max-width:600px">
 
 
-   <!-- Filtering & Sorting Options -->
 <div class="container text-center my-3">
   <form method="GET" action="{{ route('home') }}" class="d-flex justify-content-center gap-2">
     <!-- Priority Filter -->
@@ -226,25 +211,23 @@
       <option value="low" {{ request('priority') == 'low' ? 'selected' : '' }}>Low</option>
     </select>
 
-    <!-- Sorting Option -->
     <select name="sort" class="form-select w-auto" onchange="this.form.submit()">
       <option value="">Sort by</option>
       <option value="deadline" {{ request('sort') == 'deadline' ? 'selected' : '' }}>Deadline</option>
       <option value="priority" {{ request('sort') == 'priority' ? 'selected' : '' }}>Priority</option>
     </select>
 
-    <!-- Show Completed Tasks Checkbox -->
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="showCompleted" name="showCompleted"
              onchange="this.form.submit()" value="1"{{ request('showCompleted') ? 'checked' : '' }}>
       <label class="form-check-label" for="showCompleted">Show Completed Tasks</label>
     </div>
 
-     <!-- Live Search Bar -->
-<div class="input-group search-container">
-  <input type="text" class="form-control search-input" id="searchInput" name="search" value="{{ request('search') }}" placeholder="Search tasks..." autocomplete="off">
-  <span class="input-group-text search-icon"><i class="fas fa-search"></i></span>
-</div>
+     <!-- Search Bar -->
+    <div class="input-group search-container">
+      <input type="text" class="form-control search-input" id="searchInput" name="search" value="{{ request('search') }}" placeholder="Search tasks..." autocomplete="off">
+      <span class="input-group-text search-icon"><i class="fas fa-search"></i></span>
+    </div>
   </form>
 </div>
 
@@ -283,7 +266,7 @@
               </a>
               @else
 
-              <!-- Edit, Complete, and Delete Buttons -->
+             
               <a href="{{ route('task.edit', $task->id) }}" class="task-action btn-edit" title="Edit Task">
                 <i class="fas fa-edit"></i>
               </a>
@@ -321,7 +304,7 @@
 
   document.getElementById("searchInput").addEventListener("input", function() {
     let searchValue = this.value;
-    let showCompleted = document.getElementById("showCompleted").checked ? 1 : 0; // Get checkbox value
+    let showCompleted = document.getElementById("showCompleted").checked ? 1 : 0; 
 
     fetch("{{ route('home') }}?search=" + encodeURIComponent(searchValue) + 
         "&priority={{ request('priority') }}" + 

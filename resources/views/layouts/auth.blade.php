@@ -4,13 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>📋@yield("title","To Do App")</title>
-    <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
     
     <!-- Custom Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Custom Styles -->
     <style>
       html, body {
           height: 100%;
@@ -89,7 +87,6 @@
   <body class="d-flex align-items-center py-4">
     @yield("content")
 
-    <!-- Bootstrap JS -->
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
   </body>
 </html>

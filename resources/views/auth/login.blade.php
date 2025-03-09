@@ -133,11 +133,6 @@ html, body {
                 @enderror
             </div>
 
-            {{-- <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">Remember me</label>
-            </div> --}}
-
             @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -153,7 +148,7 @@ html, body {
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
             <small class="text-center">Or</small>
             <a href="{{ route('register') }}" class="text-center">Create new account</a>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; 2025 Feb</p>
+            <p class="mt-5 mb-3 text-body-secondary">&copy; Todo List App 2025 </p>
         </form>
     </div>
 </main>
