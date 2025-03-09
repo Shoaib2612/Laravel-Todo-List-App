@@ -1,7 +1,7 @@
-<footer class="bg-dark text-center text-light py-3 mt-5" style="border-radius: 15px;">
+<footer class="bg-dark text-center text-light py-3 mt-3" style="border-radius: 15px;">
     <div class="container">
         <p class="display-6 fw-bold mb-2" style="color: #f8d210;">Project made by <span class="text-warning">Shoaib</span></p>
-        <p class="fs-5" style="color: #ff6b6b;">Tech Stack: Laravel | PHP | AWS EC2 | AWS RDS | Tailwind CSS | HTML | CSS</p>
+        <p class="fs-5" style="color: #ff6b6b;">Tech Stack: Laravel | PHP | AWS EC2 | AWS RDS | Tailwind CSS | MySQL | HTML | CSS</p>
 
         <div class="mt-1">
             <a href="https://www.linkedin.com/in/shoaib-abdul-jabbar-460a1a213/" class="social-icon linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -15,6 +15,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
 
 <style>
+    footer{
+        bottom: 0;
+    }
     .social-icon {
         font-size: 30px; 
         margin: 0 10px;
@@ -22,7 +25,7 @@
         display: inline-block;
         transition: transform 0.3s ease, color 0.3s ease;
     }
-
+    
     .social-icon:hover {
         transform: scale(1.3);
     }

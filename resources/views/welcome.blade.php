@@ -323,7 +323,7 @@
 
 // Update results when the checkbox is toggled
 document.getElementById("showCompletedCheckbox").addEventListener("change", function() {
-    document.getElementById("searchInput").dispatchEvent(new Event("input")); // Trigger search update
+    document.getElementById("searchInput").dispatchEvent(new Event("input")); 
 });
 
 </script>

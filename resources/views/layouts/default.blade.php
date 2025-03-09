@@ -26,18 +26,19 @@
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
-      }
+      }     
     </style>
   </head>
-  <body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column min-vh-100">
     <!-- Animated Background -->
     <div class="animated-background"></div>
-    @include("include.header")
-    
-      @yield("content")
+      @include("include.header")
+      <div class="flex-grow-1 mt-3">
+        <div class="w-100">
+          @yield("content")
+        </div>
+      </div>   
     <script src="{{asset('assets/js/bootstrap.js')}}"></script>
-
-   
   </body>
  @include("include.footer")
 </html>
